@@ -1,9 +1,17 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row role="navigation">
     <a routerLink="/">Movie Browser</a>
+    <button mat-button routerLink="/" routerLinkActive="mat-accent">
+      Popular
+    </button>
+    <button mat-button>Now Playing</button>
+    <button mat-button>Top Rated</button>
+    <button mat-button>Upcoming</button>
     <span fxFlex></span>
     <app-theme-picker></app-theme-picker>
     <button mat-button>Sign In</button>
   </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,10 @@
+<section *ngIf="movies$ | async as movies" class="wrapper">
+  <mat-card
+    *ngFor="let movie of movies.results"
+    [style.background-image]="
+      'url(https://image.tmdb.org/t/p/original/' + movie.posterPath + ')'
+    "
+    [routerLink]="'/movie/' + movie.id"
+  >
+  </mat-card>
+</section>

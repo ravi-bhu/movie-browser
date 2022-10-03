@@ -1,6 +1,6 @@
-export type Page<I extends Iterable<any>> = Readonly<{
+export type Page<T> = Readonly<{
   page: number;
-  limit: number;
-  total_results: number;
-  total_pages: I[];
+  results: T[];
+  totalResults: number;
+  totalPages: number;
 }>;

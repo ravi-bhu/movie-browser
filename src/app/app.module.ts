@@ -10,7 +10,11 @@ import { ThemePickerModule } from './shared/theme-picker/theme-picker.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { MovieCardComponent } from './homepage/movie-card/movie-card.component';
+import { MovieCardComponent } from './movie/movie-card/movie-card.component';
+import { httpInterceptorProviders } from './http-interceptors';
+import { MatCardModule } from '@angular/material/card';
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,8 @@ import { MovieCardComponent } from './homepage/movie-card/movie-card.component';
     HomepageComponent,
     NotFoundComponent,
     MovieCardComponent,
+    MovieListComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +33,9 @@ import { MovieCardComponent } from './homepage/movie-card/movie-card.component';
     FlexLayoutModule,
     MaterialModule,
     ThemePickerModule,
+    MatCardModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
