@@ -1,12 +1,15 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
+import { theMovieDbInterceptor } from './app/http-interceptors/the-movie-db.interceptor';
+import { APP_ROUTES } from './app/routes';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(APP_ROUTES),
+    provideHttpClient(withInterceptors([theMovieDbInterceptor])),
+    provideAnimations(),
+  ],
+}).catch(console.error);

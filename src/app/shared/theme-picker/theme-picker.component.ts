@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,12 +6,15 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { StyleManagerService } from '../syle-manager/style-manager.service';
 import {
   SiteTheme,
   ThemeStorageService,
 } from './theme-storage/theme-storage.service';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,6 +23,15 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-theme-picker',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatIconModule,
+  ],
+  providers: [StyleManagerService, ThemeStorageService],
   templateUrl: './theme-picker.component.html',
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
